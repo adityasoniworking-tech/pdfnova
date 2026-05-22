@@ -1,0 +1,160 @@
+/* SplitPdf.css - Specific styling overrides for the Split tool */
+.tool-page-icon.orange {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+  box-shadow: 0 12px 24px -12px rgba(249, 115, 22, 0.6);
+}
+
+.btn-primary.btn-orange {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+  box-shadow: 0 10px 20px -10px rgba(249, 115, 22, 0.5);
+}
+
+.btn-primary.btn-orange:hover {
+  box-shadow: 0 15px 25px -10px rgba(249, 115, 22, 0.6);
+}
+
+.progress-bar-fill.orange-gradient {
+  background: linear-gradient(90deg, #fb923c, #ea580c);
+}
+
+.success-icon-large.orange-gradient {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+  box-shadow: 0 10px 20px -10px rgba(249, 115, 22, 0.5);
+}
+
+.step-number.orange-text {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.2);
+}
+
+.split-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.split-form-group {
+  margin-bottom: 8px;
+}
+
+.split-form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin-bottom: 8px;
+}
+
+.split-form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-h);
+  font-size: 16px;
+  font-family: var(--sans);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.split-form-group input:focus {
+  outline: none;
+  border-color: #f97316;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+  background: var(--bg);
+}
+
+.split-ranges-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.split-ranges-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text-h);
+}
+
+.btn-add-range {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(249, 115, 22, 0.1);
+  color: #f97316;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-range:hover {
+  background: rgba(249, 115, 22, 0.2);
+}
+
+.btn-add-range svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ranges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.ranges-list::-webkit-scrollbar {
+  width: 6px;
+}
+.ranges-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+.ranges-list::-webkit-scrollbar-thumb {
+  background: rgba(249, 115, 22, 0.5);
+  border-radius: 4px;
+}
+
+.multi-range-group {
+  margin-bottom: 0;
+}
+
+.range-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-remove-range {
+  background: transparent;
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.btn-remove-range:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.btn-remove-range svg {
+  width: 20px;
+  height: 20px;
+}

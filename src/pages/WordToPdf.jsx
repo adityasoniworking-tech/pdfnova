@@ -1,0 +1,189 @@
+import React, { useState } from 'react';
+import Dropzone from '../components/Dropzone.jsx';
+import { convertWordToPdf } from '../services/conversionService.js';
+import './WordToPdf.css';
+
+export default function WordToPdf() {
+  const [file, setFile] = useState(null);
+  const [isConverting, setIsConverting] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleFileSelected = (selectedFile) => {
+    setError(null);
+    setResult(null);
+    
+    if (selectedFile && !selectedFile.name.toLowerCase().match(/\.docx?$/)) {
+      setError("Please select a valid Word file (.doc or .docx).");
+      return;
+    }
+    
+    setFile(selectedFile);
+  };
+
+  const handleConvert = async () => {
+    if (!file) return;
+    
+    setIsConverting(true);
+    setProgress(0);
+    setError(null);
+    
+    try {
+      const conversionResult = await convertWordToPdf(file, (p) => setProgress(p));
+      setResult(conversionResult);
+    } catch (err) {
+      setError(err.message || "An error occurred during conversion.");
+    } finally {
+      setIsConverting(false);
+    }
+  };
+
+  const handleReset = () => {
+    setFile(null);
+    setResult(null);
+    setError(null);
+    setProgress(0);
+  };
+
+  const handleDownload = () => {
+    if (!result || !result.blob) return;
+    
+    const url = URL.createObjectURL(result.blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = result.fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  return (
+    <div className="tool-page-container">
+      <div className="tool-page-header">
+        <div className="tool-page-icon indigo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <path d="M9 15v-6"></path>
+            <path d="M12 15V9"></path>
+            <path d="M15 15v-6"></path>
+          </svg>
+        </div>
+        <h1 className="tool-page-title">Word to PDF Converter</h1>
+        <p className="tool-page-subtitle">Convert your Word documents (.doc, .docx) to portable PDF files.</p>
+      </div>
+
+      <div className="tool-workspace">
+        {error && (
+          <div className="error-banner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>{error}</span>
+          </div>
+        )}
+
+        {!file && !result && (
+          <Dropzone onFileSelected={handleFileSelected} accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" maxFiles={1} />
+        )}
+
+        {file && !result && (
+          <div className="file-preview-card">
+            <div className="file-info">
+              <div className="file-icon" style={{color: '#6366f1', background: 'rgba(99, 102, 241, 0.1)'}}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                </svg>
+              </div>
+              <div className="file-details">
+                <h3>{file.name}</h3>
+                <p>{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+              </div>
+              <button className="remove-btn" onClick={handleReset} disabled={isConverting} title="Remove file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            {isConverting ? (
+              <div className="conversion-progress">
+                <div className="progress-bar-container">
+                  <div className="progress-bar-fill" style={{ width: `${progress}%`, background: 'linear-gradient(90deg, #818cf8, #6366f1)' }}></div>
+                </div>
+                <div className="progress-status">
+                  <span>Converting document...</span>
+                  <span>{progress}%</span>
+                </div>
+              </div>
+            ) : (
+              <div className="conversion-actions">
+                <button className="btn btn-primary full-width" onClick={handleConvert} style={{background: 'linear-gradient(135deg, #818cf8, #6366f1)'}}>
+                  Convert to PDF
+                  <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {result && (
+          <div className="result-card">
+            <div className="success-icon-large">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h2>Conversion Complete!</h2>
+            <p>{result.summary}</p>
+            
+            <div className="result-actions">
+              <button className="btn btn-primary" onClick={handleDownload} style={{background: 'linear-gradient(135deg, #818cf8, #6366f1)'}}>
+                Download PDF File
+                <svg className="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+              </button>
+              <button className="btn btn-secondary" onClick={handleReset}>
+                Convert Another File
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+      
+      <div className="tool-info-section">
+        <h2>How to convert Word to PDF</h2>
+        <div className="steps-grid">
+          <div className="step-card">
+            <div className="step-number">1</div>
+            <h3>Upload Word File</h3>
+            <p>Drag and drop your Word file (.doc or .docx) into the upload box or click to select a file from your device.</p>
+          </div>
+          <div className="step-card">
+            <div className="step-number">2</div>
+            <h3>Convert</h3>
+            <p>Click the "Convert to PDF" button. Our engine will quickly process and format your document.</p>
+          </div>
+          <div className="step-card">
+            <div className="step-number">3</div>
+            <h3>Download</h3>
+            <p>Once finished, securely download your new, universally compatible PDF file.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

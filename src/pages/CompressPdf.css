@@ -1,0 +1,87 @@
+/* CompressPdf.css */
+.tool-page-icon.red {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  box-shadow: 0 12px 24px -12px rgba(239, 68, 68, 0.6);
+}
+
+.btn-primary.btn-red {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  box-shadow: 0 10px 20px -10px rgba(239, 68, 68, 0.5);
+}
+
+.btn-primary.btn-red:hover {
+  box-shadow: 0 15px 25px -10px rgba(239, 68, 68, 0.6);
+}
+
+.progress-bar-fill.red-gradient {
+  background: linear-gradient(90deg, #f87171, #dc2626);
+}
+
+.success-icon-large.red-gradient {
+  background: linear-gradient(135deg, #f87171, #ef4444);
+  box-shadow: 0 10px 20px -10px rgba(239, 68, 68, 0.5);
+}
+
+.step-number.red-text {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.compression-options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.compression-levels h3 {
+  font-size: 16px;
+  color: var(--text-h);
+  margin-bottom: 16px;
+}
+
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.option-card.active {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.option-card input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #ef4444;
+}
+
+.option-content h4 {
+  margin: 0 0 4px 0;
+  font-size: 15px;
+  color: var(--text-h);
+}
+
+.option-content p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text);
+}

@@ -1,0 +1,174 @@
+/* MergePdf.css */
+.tool-page-icon.green {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  box-shadow: 0 12px 24px -12px rgba(16, 185, 129, 0.6);
+}
+
+.btn-primary.btn-green {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  box-shadow: 0 10px 20px -10px rgba(16, 185, 129, 0.5);
+}
+
+.btn-primary.btn-green:hover {
+  box-shadow: 0 15px 25px -10px rgba(16, 185, 129, 0.6);
+}
+
+.btn-primary.btn-green:disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.progress-bar-fill.green-gradient {
+  background: linear-gradient(90deg, #34d399, #059669);
+}
+
+.success-icon-large.green-gradient {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  box-shadow: 0 10px 20px -10px rgba(16, 185, 129, 0.5);
+}
+
+.step-number.green-text {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.merge-workspace-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.selected-files-list h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: var(--text-h);
+}
+
+.files-scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.files-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+.files-scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+.files-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(16, 185, 129, 0.5);
+  border-radius: 4px;
+}
+
+.file-list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.file-list-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.file-list-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.file-list-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.file-list-details {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.file-list-details .file-name {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text-h);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.file-list-details .file-size {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.file-list-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.file-list-actions button {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: var(--text-h);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.file-list-actions button:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.file-list-actions button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.file-list-actions button.remove {
+  color: #ef4444;
+}
+
+.file-list-actions button.remove:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.helper-text {
+  font-size: 14px;
+  color: var(--text);
+  margin-top: 12px;
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.text-center {
+  text-align: center;
+}

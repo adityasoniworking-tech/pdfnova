@@ -1,0 +1,84 @@
+/* Dropzone.css */
+.dropzone-container {
+  width: 100%;
+  border: 2px dashed var(--border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dropzone-container:hover {
+  border-color: #a855f7;
+  background: rgba(168, 85, 247, 0.05);
+}
+
+.dropzone-container.active {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  transform: scale(1.02);
+}
+
+.dropzone-input {
+  display: none;
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  pointer-events: none;
+}
+
+.dropzone-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(59, 130, 246, 0.1));
+  color: #a855f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.dropzone-container:hover .dropzone-icon,
+.dropzone-container.active .dropzone-icon {
+  transform: translateY(-5px);
+  background: linear-gradient(135deg, #a855f7, #3b82f6);
+  color: white;
+  box-shadow: 0 10px 20px -10px rgba(168, 85, 247, 0.5);
+}
+
+.dropzone-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.dropzone-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.dropzone-text.drop-text {
+  color: #3b82f6;
+}
+
+.dropzone-subtext {
+  font-size: 14px;
+  color: var(--text);
+  margin: 0;
+  opacity: 0.8;
+}

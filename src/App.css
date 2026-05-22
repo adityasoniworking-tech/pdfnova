@@ -1,0 +1,25 @@
+.app-main {
+  display: grid;
+  min-height: calc(100svh - 72px);
+  place-items: center;
+  padding: 24px;
+}
+
+.app-placeholder {
+  width: min(760px, 100%);
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 24px;
+  background: var(--social-bg);
+  box-shadow: var(--shadow);
+}
+
+.app-placeholder h1 {
+  margin: 0 0 12px;
+  color: var(--text-h);
+}
+
+.app-placeholder p {
+  margin: 8px 0;
+}

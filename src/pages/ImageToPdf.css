@@ -1,0 +1,51 @@
+/* ImageToPdf.css */
+.tool-page-icon.pink {
+  background: linear-gradient(135deg, #f472b6, #ec4899);
+  box-shadow: 0 12px 24px -12px rgba(236, 72, 153, 0.6);
+}
+
+.btn-primary.btn-pink {
+  background: linear-gradient(135deg, #f472b6, #ec4899);
+  box-shadow: 0 10px 20px -10px rgba(236, 72, 153, 0.5);
+}
+
+.btn-primary.btn-pink:hover {
+  box-shadow: 0 15px 25px -10px rgba(236, 72, 153, 0.6);
+}
+
+.progress-bar-fill.pink-gradient {
+  background: linear-gradient(90deg, #f472b6, #db2777);
+}
+
+.success-icon-large.pink-gradient {
+  background: linear-gradient(135deg, #f472b6, #ec4899);
+  box-shadow: 0 10px 20px -10px rgba(236, 72, 153, 0.5);
+}
+
+.step-number.pink-text {
+  color: #ec4899;
+  background: rgba(236, 72, 153, 0.1);
+  border-color: rgba(236, 72, 153, 0.2);
+}
+
+.img-list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+}
+
+.img-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.2);
+  flex-shrink: 0;
+}
+
+.img-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
