@@ -66,7 +66,7 @@ export default function Contact() {
               </div>
               <div className="info-text">
                 <h3>Location</h3>
-                <p>Global Headquarters<br/>San Francisco, CA</p>
+                <p>Surat, Gujarat<br/>India</p>
               </div>
             </div>
 
